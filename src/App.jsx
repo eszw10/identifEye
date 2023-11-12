@@ -1,8 +1,17 @@
+import {Routes, Route} from 'react-router-dom'
+import Home from './pages/Home'
+import Register from './pages/Register'
+import Login from './pages/Login'
+
 function App() {
 
   return (
-    <div className="h-screen text-white text-lg font-bold flex items-center justify-center bg-gray-700">
-      <p className='text-center'>Welcome to identifEye!</p>
+    <div className="font-poppins bg-primary ">
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+      </Routes>
     </div>
   )
 }
