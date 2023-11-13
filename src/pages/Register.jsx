@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [account,setAccount] = useState({
@@ -8,6 +9,8 @@ const Register = () => {
         username:'',
         password:''
     })
+
+    const navigate = useNavigate()
 
     const [isSeen,setIsSeen] = useState(false)
 
@@ -32,23 +35,23 @@ const Register = () => {
                         <img src="/assets/images/man_rise.svg" alt="" />
                     </div>
                 </div>
-                <form action="" className="flex flex-col gap-5 border-2 border-accent p-10 rounded-xl">
+                <form action="" className="flex flex-col gap-5 border-2 border-accent p-10 rounded-xl" onSubmit={()=>navigate('/scan')}>
                     <div className="name flex flex-col gap-2">
                         <label htmlFor="name" className="font-bold">Name</label>
-                        <input type="text" name="name" id="name" className="input" placeholder="Enter your name" value={account.name} onChange={handleChange}/>
+                        <input type="text" name="name" id="name" className="input" placeholder="Enter your name" value={account.name} onChange={handleChange} required/>
                     </div>
                     <div className="email flex flex-col gap-2">
                         <label htmlFor="email" className="font-bold">Email</label>
-                        <input type="email" name="email" id="email" className="input" placeholder="Enter your email" value={account.email} onChange={handleChange}/>
+                        <input type="email" name="email" id="email" className="input" placeholder="Enter your email" value={account.email} onChange={handleChange} required/>
                     </div>
                     <div className="username flex flex-col gap-2">
                         <label htmlFor="username" className="font-bold">Username</label>
-                        <input type="text" name="username" id="username" className="input" placeholder="Enter your username" value={account.username} onChange={handleChange}/>
+                        <input type="text" name="username" id="username" className="input" placeholder="Enter your username" value={account.username} onChange={handleChange} required/>
                     </div>
                     <div className="password flex flex-col gap-2">
                         <label htmlFor="password" className="font-bold">Password</label>
                         <div className="flex items-center justify-around input">
-                            <input type={isSeen? "text" :"password"} name="password" id="password" className="bg-secondary outline-none placeholder:text-gray-500" placeholder="Enter your password" value={account.password} onChange={handleChange}/>
+                            <input type={isSeen? "text" :"password"} name="password" id="password" className="bg-secondary outline-none placeholder:text-gray-500" placeholder="Enter your password" value={account.password} onChange={handleChange} required/>
                             <i className={isSeen? "fa-solid fa-eye-slash cursor-pointer" : "fa-solid fa-eye cursor-pointer"} onClick={()=>setIsSeen(!isSeen)}></i>
                         </div>
                     </div>   
