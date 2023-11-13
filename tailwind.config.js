@@ -9,7 +9,7 @@ export default {
         'primary':'#222831',
         'secondary':'#393E46',
         'accent':'#00ADB5',
-        'light':'#EEEEEE'
+        'light':'#EEEEEE',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif']

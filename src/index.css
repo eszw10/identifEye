@@ -49,3 +49,7 @@ body {
 .btn-secondary {
     @apply py-3 px-8 bg-secondary hover:bg-[#31363D] btn-motion text-light rounded-xl
 }
+
+.input {
+  @apply bg-secondary rounded-xl py-2 px-4 outline-none placeholder:text-gray-500
+}
