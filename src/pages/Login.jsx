@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { apiURL } from "../components/config/config";
 
 const Login = () => {
     const [account,setAccount] = useState({
@@ -14,13 +16,26 @@ const Login = () => {
 
     function handleChange(e) {
         const {name, value} = e.target;
-        setAccount(() => {
+        setAccount((prevState) => {
                 return {
+                    ...prevState,
                     [name]:value
                 }
             }
         )
     }
+
+    function handleLogin(e) {
+        e.preventDefault()
+        axios.post(`${apiURL}/login`, {
+            "username": account.username,
+            "password": account.password
+        }).then(res=> {
+            window.localStorage.setItem('token', res.data.token)
+            navigate('/loginScan')
+        }).catch(e=>console.log(e))
+    }
+
     return (
         <div className="text-light">
             <Navbar />
@@ -32,7 +47,7 @@ const Login = () => {
                     </div>
                     <img src="/assets/images/man_rest.svg" alt="" className="h-96" />
                 </div>
-                <form action="" className="flex flex-col gap-5 border-2 border-accent p-10 rounded-xl" onSubmit={()=> navigate('/scan')}>
+                <form action="" className="flex flex-col gap-5 border-2 border-accent p-10 rounded-xl" onSubmit={handleLogin}>
                     <div className="username flex flex-col gap-2">
                         <label htmlFor="username" className="font-bold">Username</label>
                         <input type="text" name="username" id="username" className="input" placeholder="Enter your username" value={account.username} onChange={handleChange} required/>

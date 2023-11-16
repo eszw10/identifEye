@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '/assets/icons/logo.png'
 
 const Nav = () => {
+    const navigate = useNavigate()
+    function handleLogOut() {
+        window.localStorage.removeItem('token')
+        navigate('/')
+    }
+
     return (
         <div className="text-light flex py-4 items-center justify-between px-10 border-b border-b-secondary">
             <div className="logo flex items-center gap-2">
@@ -10,7 +16,7 @@ const Nav = () => {
             </div>
             <div className="navigation flex font-bold gap-12 items-center">
                 <Link className='hover-underline-animation' to={'/success'}>HOME</Link>
-                <Link className='btn-accent' to={'/'}>LOGOUT</Link>
+                <button className='btn-accent' onClick={handleLogOut}>LOGOUT</button>
             </div>
         </div>
     );
