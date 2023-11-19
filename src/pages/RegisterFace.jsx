@@ -15,7 +15,6 @@ const RegisterFace = () => {
                 capture()
             } else {
                 clearInterval(interval);
-                // Once all images captured, create FormData and post to the database
                 if (arrImage.length === 5) {
                     createFormDataAndPost();
                 }
