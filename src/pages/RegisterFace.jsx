@@ -47,12 +47,9 @@ const RegisterFace = () => {
             }).then(res=> {
                 window.localStorage.setItem('token',res.data.token)
                 navigate('/success')
-            }).catch(e=> {
-                console.log(e)
+            }).catch(()=> {
+                navigate('/notfound')
             })
-            // Here, you would make your API call to post formData to the database
-            // Example: await fetch('your-post-endpoint', { method: 'POST', body: formData });
-            console.log(formData.getAll('faces')); // Log the FormData before sending
         } catch (error) {
             console.error("Error creating FormData:", error);
         }
@@ -76,15 +73,15 @@ const RegisterFace = () => {
             <img src="/assets/images/arrow_upleft.svg" alt="" className="absolute left-24 bottom-16"/>
             <img src="/assets/images/arrow_upright.svg" alt="" className="absolute right-24 bottom-16"/>
             <div className="text-6xl container p-14">
-                <p className=" text-light text-center font-bold mb-4">Scanning...</p>
+                <p className=" text-light text-center font-bold mb-4 animate-pulse">Scanning...</p>
                 <p className="text-accent font-bold text-center text-4xl">Show your face to the camera</p>
             </div>
             <div className="flex relative items-center justify-center overflow-hidden">
-                <div className="absolute z-10 border-2 border-accent h-[400px] w-[400px] rounded-full"></div>
+                <div className="absolute z-10 border-2 border-accent h-[400px] w-[400px] rounded-full animate-ping"></div>
                 <Webcam
                 ref={webcamRef}
                 className="overflow-hidden"
-            />
+                />
             </div>
         </div>
     );

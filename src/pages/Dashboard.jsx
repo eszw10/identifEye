@@ -11,7 +11,6 @@ const Dashboard = () => {
                 Authorization:userToken()
             }
         }).then(res=> {
-            console.log(res)
             setName(res.data.data.name)})
         .catch(e=>console.log(e))
     }

@@ -29,7 +29,6 @@ const Register = () => {
 
     function handleRegister(e) {
         e.preventDefault();
-        console.log(account)
         axios.post(`${apiURL}/register`, {
             "username": account.username,
             "password": account.password,
@@ -37,7 +36,7 @@ const Register = () => {
             "email": account.email
         }).then(res=> {
             window.localStorage.setItem('token', res.data.token)
-            navigate('/registerScan')
+            navigate('/confirmReg')
         }).catch()
     }
 

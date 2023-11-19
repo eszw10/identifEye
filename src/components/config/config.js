@@ -1,4 +1,4 @@
-const apiURL = "http://lab.invasikode.com:30000"
+const apiURL = "http://lab.invasikode.com:8080"
 function userToken() {
     return `Bearer ${window.localStorage.getItem('token')}`
 }

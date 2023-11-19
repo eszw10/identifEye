@@ -32,7 +32,7 @@ const Login = () => {
             "password": account.password
         }).then(res=> {
             window.localStorage.setItem('token', res.data.token)
-            navigate('/loginScan')
+            navigate('/confirmLog')
         }).catch(e=>console.log(e))
     }
 
